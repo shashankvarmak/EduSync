@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Department Details</title>
+    <link rel="stylesheet" href="/css/department-details.css">
+</head>
+<body>
+<header class="fixed-header">
+    <h1 class="header-title">Faculty</h1>
+    <nav class="header-nav">
+
+        <a href="/" class="logout-btn">Logout</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h1 class="dp" th:text="${department.name}"></h1>
+    <p class="dp"><strong>Department Code:</strong> <span th:text="${department.code}"></span></p>
+
+    <h2 class="dp">Faculty Members</h2>
+    <div class="faculty-list">
+        <div class="faculty-card" th:each="faculty : ${department.facultyList}">
+            <h3 th:text="${faculty.name}"></h3>
+            <p><strong>Designation:</strong> <span th:text="${faculty.designation}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${faculty.email}"></span></p>
+        </div>
+    </div>
+
+    <a href="/student/departments" class="back-button">Back to Departments</a>
+</div>
+
+</body>
+</html>

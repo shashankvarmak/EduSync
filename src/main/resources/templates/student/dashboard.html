@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+
+</head>
+<body>
+<header >
+    <h1>Student Dashboard</h1>
+    <a href="/student/dashboard" class="logout-btn">Home</a>
+    <a href="/student/departments" class="logout-btn">Departments</a>
+    <a href="/" class="logout-btn">Logout</a>
+</header>
+
+<div class="dashboard-container">
+    <!-- Profile Section -->
+    <div class="profile-section">
+        <h2>Welcome, <span th:text="${student.name}"></span>!</h2>
+        <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
+        <p><strong>Roll No:</strong> <span th:text="${student.rollNo}"></span></p>
+        <p><strong>Department:</strong> <span th:text="${student.department}"></span></p>
+    </div>
+
+    <!-- Courses Section -->
+    <div class="courses-section">
+        <h2>Your Courses</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Course Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="course, iterStat : ${courses}">
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${course}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
