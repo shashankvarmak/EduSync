@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/css/edit-profile.css">
+</head>
+<body>
+<header class="fixed-header">
+    <h1 class="header-title">Edit Profile</h1>
+    <nav class="header-nav">
+        <a href="/student/dashboard">Dashboard</a>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Edit Your Profile</h2>
+    <form action="/student/update-profile" method="post">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" th:value="${student.name}" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:value="${student.email}" readonly>
+
+        <label for="department">Department:</label>
+        <input type="text" id="department" th:value="${student.department}" readonly>
+
+        <label for="password">New Password:</label>
+        <input type="password" id="password" name="password">
+
+        <button type="submit" class="save-button">Save Changes</button>
+    </form>
+</div>
+
+</body>
+</html>
