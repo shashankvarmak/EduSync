@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="/css/faculty-dashboard.css">
+</head>
+<body>
+
+<!-- Fixed Header -->
+<header class="fixed-header">
+    <h1 class="header-title">Faculty Dashboard</h1>
+    <nav class="header-nav">
+        <a href="/faculty/profile">Profile</a>
+        <a href="/faculty/courses">Courses</a>
+        <a href="/faculty/attendance">Attendance</a>
+        <a href="/faculty/assignments">Assignments</a>
+        <a href="/faculty/reports">Reports</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<div class="content">
+    <div class="faculty-section">
+        <div class="faculty-card">
+            <h2>Welcome, <span th:text="${faculty.name}"></span></h2>
+            <p>Department: <span th:text="${faculty.department}"></span></p>
+            <p>Email: <span th:text="${faculty.email}"></span></p>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Course Management -->
+        <div class="dashboard-card">
+            <h3>Courses</h3>
+            <p>Manage assigned courses and materials.</p>
+            <a href="/faculty/courses" class="details-button">Manage Courses</a>
+        </div>
+
+        <!-- Attendance -->
+        <div class="dashboard-card">
+            <h3>Attendance</h3>
+            <p>Track student attendance records.</p>
+            <a href="/faculty/attendance" class="details-button">Mark Attendance</a>
+        </div>
+
+        <!-- Assignments -->
+        <div class="dashboard-card">
+            <h3>Assignments</h3>
+            <p>Upload, review, and grade assignments.</p>
+            <a href="/faculty/assignments" class="details-button">View Assignments</a>
+        </div>
+
+        <!-- Reports -->
+        <div class="dashboard-card">
+            <h3>Student Reports</h3>
+            <p>Generate performance reports for students.</p>
+            <a href="/faculty/reports" class="details-button">View Reports</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
