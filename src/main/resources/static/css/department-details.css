@@ -1,18 +1,19 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #F2F0EF;
     margin: 0;
     padding: 0;
 }
 
+/* Fixed Header */
 .fixed-header {
     top: 0;
     left: 0;
-    width: 100%;
+
     height: 80px;
-    background-color: orange;
+    background-color: #245F73;
     color: white;
-    padding: 5px 20px;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,43 +22,91 @@ body {
     z-index: 1000;
 }
 
+/* Navigation Links */
+.header-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.header-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Logout Button */
+.logout-btn {
+    font-weight: bold;
+}
+
+/* Dashboard & Logout Alignment */
+.header-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Page Container */
 .container {
-    position: relative;
-    bottom: 70px;
-    max-width: 800px;
-    margin: auto;
+    max-width: 90%;
+    margin: 80px auto 20px;
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 80px;
+}
+
+#heading{
+color: white;
+ /* Adjust size
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-left: 20px; */
+}
+
+/* Department Code Styling */
+#deptcode {
+    color: #245F73;
+    font-size: 18px;
 }
 
 h1, h2 {
-    color: #333;
+    color: #854a2d;
 }
 
+/* Faculty List - Grid Layout */
 .faculty-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
 }
 
+/* Faculty Card - Equal Height */
 .faculty-card {
     background: #fff;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 20px;
+    border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    min-height: 150px;
 }
 
 .contact-button {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: auto;
     padding: 8px 12px;
-    background-color: #28a745;
+    background-color: #854a2d;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -66,33 +115,21 @@ h1, h2 {
 }
 
 .contact-button:hover {
-    background-color: #218838;
-}
-
-.logout-btn {
-    position: relative;
-    right: 40px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.logout-btn:hover {
-    text-decoration: underline;
+    background-color: #6c3b22;
 }
 
 .back-button {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 15px;
-    background-color: #007bff;
+    background-color: #245F73;
     color: white;
     text-decoration: none;
     border-radius: 5px;
 }
 
 .back-button:hover {
-    background-color: #0056b3;
+    background-color: #1D4D60;
 }
 
 html, body {

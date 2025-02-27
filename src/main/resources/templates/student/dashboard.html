@@ -1,14 +1,12 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Student Dashboard</title>
     <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
-
 </head>
 <body>
-<header >
+<header>
     <h1>Student Dashboard</h1>
     <a href="/student/dashboard" class="logout-btn">Home</a>
     <a href="/student/departments" class="logout-btn">Departments</a>
@@ -16,15 +14,22 @@
 </header>
 
 <div class="dashboard-container">
-    <!-- Profile Section -->
-    <div class="profile-section">
-        <h2>Welcome, <span th:text="${student.name}"></span>!</h2>
-        <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
-        <p><strong>Roll No:</strong> <span th:text="${student.rollNo}"></span></p>
-        <p><strong>Department:</strong> <span th:text="${student.department}"></span></p>
+    <!-- Left Section: Profile & Academic Details -->
+    <div class="left-section">
+        <div class="profile-section">
+            <h2>Personal Information</h2>
+            <p><strong>Name:</strong> <span th:text="${student.name}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
+        </div>
+
+        <div class="profile-section">
+            <h2>Academic Details</h2>
+            <p><strong>Roll No:</strong> <span th:text="${student.rollNo}"></span></p>
+            <p><strong>Department:</strong> <span th:text="${student.department}"></span></p>
+        </div>
     </div>
 
-    <!-- Courses Section -->
+    <!-- Right Section: Courses -->
     <div class="courses-section">
         <h2>Your Courses</h2>
         <table>
@@ -43,3 +48,42 @@
         </table>
     </div>
 </div>
+</body>
+</html>
+
+<!--<div class="dashboard-container">-->
+<!--    <div class="left-section">-->
+<!--        &lt;!&ndash; Profile Section &ndash;&gt;-->
+<!--        <div class="profile-section">-->
+<!--            <h2>Personal Information</h2>-->
+<!--            <p><strong>Name:</strong> <span th:text="${student.name}"></span></p>-->
+<!--            <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Academic Details &ndash;&gt;-->
+<!--        <div class="profile-section academic-details">-->
+<!--            <h2>Academic Details</h2>-->
+<!--            <p><strong>Roll No:</strong> <span th:text="${student.rollNo}"></span></p>-->
+<!--            <p><strong>Department:</strong> <span th:text="${student.department}"></span></p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Courses Section &ndash;&gt;-->
+<!--    <div class="courses-section">-->
+<!--        <h2>Your Courses</h2>-->
+<!--        <table>-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>#</th>-->
+<!--                <th>Course Name</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="course, iterStat : ${courses}">-->
+<!--                <td th:text="${iterStat.count}"></td>-->
+<!--                <td th:text="${course}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+
+

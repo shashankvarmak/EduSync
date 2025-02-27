@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #F2F0EF;
     margin: 0;
     padding: 0;
 }
@@ -10,7 +10,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: orange;
+    background-color: #245F73;
     color: white;
     padding: 15px 20px;
     display: flex;
@@ -32,7 +32,7 @@ body {
 
 h2 {
     text-align: center;
-    color: #333;
+    color: #245F73;
 }
 
 form {
@@ -49,7 +49,7 @@ input {
     padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #BBBDBC;
 }
 
 /* Make email and department fields non-editable */
@@ -61,7 +61,7 @@ input[readonly] {
 .save-button {
     margin-top: 15px;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #854A2D;
     color: white;
     border: none;
     border-radius: 5px;
@@ -70,5 +70,5 @@ input[readonly] {
 }
 
 .save-button:hover {
-    background-color: #0056b3;
+    background-color: #733E24;
 }
