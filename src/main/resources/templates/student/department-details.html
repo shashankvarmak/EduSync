@@ -8,8 +8,8 @@
 <header class="fixed-header">
     <h1 class="header-title" id="heading">Faculty</h1>
     <nav class="header-nav">
-        <a href="/student/departments">Departments</a>
-        <a href="/logout" class="logout-btn">Logout</a>
+        <a href="/student/dashboard">Dashboard</a>
+        <a href="/" class="logout-btn">Logout</a>
     </nav>
 </header>
 
@@ -22,12 +22,20 @@
         <div class="faculty-card" th:each="faculty : ${department.facultyList}">
             <h3 th:text="${faculty.name}"></h3>
             <p><strong>Designation:</strong> <span th:text="${faculty.designation}"></span></p>
-            <p><strong>Email:</strong> <a th:href="'mailto:' + ${faculty.email}" th:text="${faculty.email}" class="contact-btn"></a></p>
+            <p><strong>Email:</strong> <span th:text="${faculty.email}"></span></p>
+            <a th:href="'mailto:' + ${faculty.email} + '?subject=Inquiry from Student&body=Hello Professor, I have a question...'"
+               class="contact-button">
+                Send Email
+            </a>
         </div>
     </div>
 
+
+
+
     <a href="/student/departments" class="back-button">Back to Departments</a>
 </div>
+
 
 </body>
 </html>

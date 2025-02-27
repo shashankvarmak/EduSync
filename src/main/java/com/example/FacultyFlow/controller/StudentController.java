@@ -44,12 +44,21 @@ public class StudentController {
         // Fetch courses for the student's department
         List<String> courses = courseDeptService.getCoursesByDepartment(student.getDepartment());
 
-        // Pass student and course details to Thymeleaf
+        // Fetch Announcements (Replace this with DB fetch later)
+        List<String> announcements = List.of(
+                "📢 Mid-Semester Exams start from March 10th!",
+                "🚀 New AI/ML Course available for enrollment!",
+                "📅 College Fest registrations open now!"
+        );
+
+        // Pass student details, courses, and announcements to Thymeleaf
         model.addAttribute("student", student);
         model.addAttribute("courses", courses);
+        model.addAttribute("announcements", announcements);
 
         return "student/dashboard";
     }
+
     @GetMapping("/student/departments")
     public String showDepartments(Model model) {
         List<Department> departments = departmentService.getAllDepartments();
