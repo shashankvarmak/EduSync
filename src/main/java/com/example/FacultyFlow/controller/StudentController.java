@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -58,6 +60,54 @@ public class StudentController {
 
         return "student/dashboard";
     }
+    @GetMapping("/student/edit-profile")
+    public String showEditProfilePage(HttpSession session, Model model) {
+        String email = (String) session.getAttribute("loggedInUserEmail");
+
+        if (email == null) {
+            return "redirect:/login"; // Redirect to login if not logged in
+        }
+
+        User student = userRepo.findByEmail(email);
+        if (student == null) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("student", student);
+        return "student/edit-profile"; // Ensure you have edit-profile.html
+    }
+    @PostMapping("/student/update-profile")
+    public String updateProfile(@RequestParam String name,
+                                @RequestParam(required = false) String password,
+                                HttpSession session) {
+        // Get the logged-in student's email from the session
+        String email = (String) session.getAttribute("loggedInUserEmail");
+
+        if (email == null) {
+            return "redirect:/login"; // Redirect if user is not logged in
+        }
+
+        // Fetch student from the database
+        User student = userRepo.findByEmail(email);
+        if (student == null) {
+            return "redirect:/login";
+        }
+
+        // Update name
+        student.setName(name);
+
+        // Update password only if provided
+        if (password != null && !password.isEmpty()) {
+            student.setPassword(password);
+        }
+
+        // Save the updated user details
+        userRepo.save(student);
+
+        return "redirect:/student/dashboard"; // Redirect back to dashboard
+    }
+
+
 
     @GetMapping("/student/departments")
     public String showDepartments(Model model) {
