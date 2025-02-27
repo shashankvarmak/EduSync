@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f7f3e9;
+    background-color: #F2F0EF;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -9,7 +9,7 @@ body {
 
 /* Header */
 header {
-    background-color: #ff9800;
+    background-color: #245F73;
     padding: 15px;
     color: white;
     display: flex;
@@ -36,10 +36,11 @@ header {
     width: 400px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #854a2d; /* Brown accent */
 }
 
 h2 {
-    color: #333;
+    color: #245F73;
 }
 
 p {
@@ -61,7 +62,7 @@ label {
 
 input, select {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #BBBDBC;
     border-radius: 5px;
     font-size: 14px;
     width: 90%;
@@ -69,10 +70,10 @@ input, select {
 
 /* Button */
 .button {
-    background-color: #ff9800;
+    background-color: #245F73;
     color: white;
     border: none;
-        height:70px;
+    height:70px;
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
@@ -81,7 +82,7 @@ input, select {
 }
 
 .button:hover {
-    background-color: #e68900;
+    background-color: #1F4E5E;
 }
 
 /* Footer */

@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #fff3e0; /* Light orange background */
+    background-color: #BBBDBC; /* Light GRAY background */
     color: #333;
     text-align: center;
     margin: 0;
@@ -10,7 +10,7 @@ body {
 
 /* Header */
 header {
-    background: #ffb74d; /* Muted orange */
+    background: #245F73; /* Muted TEAL SHADE */
     color: white;
     padding: 15px 20px;
     height: 80px;
@@ -53,7 +53,7 @@ h1 {
     padding: 15px 25px;
     font-size: 16px;
     color: white;
-    background: #ffb74d; /* Button color */
+    background: #9b5d3a;; /* Button color */
     border: none;
     border-radius: 5px;
     text-decoration: none;
@@ -61,14 +61,13 @@ h1 {
 }
 
 .button:hover {
-    background: #ffa726; /* Darker on hover */
+    background: #9b5d3a;; /* Darker on hover */
 }
 
 /* Image */
 .image {
     max-width: 100%;
     height: auto;
-
     border-radius: 8px;
 }
 
