@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="/css/faculty-dashboard.css">
+</head>
+<body>
+<header>
+    <h1>Faculty Dashboard</h1>
+    <a href="/" class="logout-btn">Logout</a>
+</header>
+
+<div class="container">
+    <h2>Welcome, <span th:text="${faculty.name}"></span>!</h2>
+    <p><strong>Designation:</strong> <span th:text="${faculty.designation}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${faculty.email}"></span></p>
+</div>
+
+</body>
+</html>

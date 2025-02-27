@@ -20,6 +20,7 @@
             <h2>Personal Information</h2>
             <p><strong>Name:</strong> <span th:text="${student.name}"></span></p>
             <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
+            <a href="/student/edit-profile" class="edit-button">Edit Profile</a> <!-- Added Edit Profile button -->
         </div>
 
         <div class="profile-section">
@@ -50,40 +51,3 @@
 </div>
 </body>
 </html>
-
-<!--<div class="dashboard-container">-->
-<!--    <div class="left-section">-->
-<!--        &lt;!&ndash; Profile Section &ndash;&gt;-->
-<!--        <div class="profile-section">-->
-<!--            <h2>Personal Information</h2>-->
-<!--            <p><strong>Name:</strong> <span th:text="${student.name}"></span></p>-->
-<!--            <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Academic Details &ndash;&gt;-->
-<!--        <div class="profile-section academic-details">-->
-<!--            <h2>Academic Details</h2>-->
-<!--            <p><strong>Roll No:</strong> <span th:text="${student.rollNo}"></span></p>-->
-<!--            <p><strong>Department:</strong> <span th:text="${student.department}"></span></p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Courses Section &ndash;&gt;-->
-<!--    <div class="courses-section">-->
-<!--        <h2>Your Courses</h2>-->
-<!--        <table>-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>#</th>-->
-<!--                <th>Course Name</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr th:each="course, iterStat : ${courses}">-->
-<!--                <td th:text="${iterStat.count}"></td>-->
-<!--                <td th:text="${course}"></td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--    </div>-->
-
-
