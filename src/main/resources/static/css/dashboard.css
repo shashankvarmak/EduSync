@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #F2F0EF;
@@ -7,73 +6,54 @@ body {
     text-align: center;
 }
 
-/* Header */
 header {
     background-color: #245F73;
     padding: 10px;
     color: white;
-    height:70px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logout-btn {
+.nav-btn {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    margin: 0 10px;
 }
 
-.logout-btn:hover {
+.nav-btn:hover {
     text-decoration: underline;
 }
 
-/* Dashboard Container
 .dashboard-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
     padding: 20px;
 }
-*/
 
-/* Profile Section (Compact Card)
+/* Profile Section */
 .profile-section {
     background: white;
     padding: 20px;
-    margin: 10px auto;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 40%;
+    width: 50%;
     text-align: center;
     border-left: 5px solid #816C61;
-    border-right: 5px solid #816C61;
 }
 
-*/
-
-h2 {
-    color: #333;
-}
-
-strong {
-    color: #555;
-}
-
-
-
-/* Courses Section
-.courses-section {
+/* Schedule Section */
+.schedule-section {
     background: white;
     padding: 20px;
-    margin: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin-top: 20px;
 }
-*/
 
 /* Table Styling */
 table {
@@ -85,66 +65,10 @@ table {
 th, td {
     border: 1px solid #ddd;
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 th {
     background-color: #245F73;
     color: white;
-}
-
-/* Dashboard Layout */
-.dashboard-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height : 80vh;
-    gap:20px;
-}
-
-/* Left Section (Profile & Academic Details) */
-.left-section {
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 20%;
-}
-
-/* Profile Sections */
-.profile-section , .courses-section{
-    background: white;
-    padding: 20px;
-    /* margin-bottom: 10px; */
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #733E24;
-}
-
-/* Courses Section
- background: white;
-     padding: 20px;
-     border-radius: 10px;
-     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
- */
-.courses-section {
-    width: 55%;
-}
-.edit-button{
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #245F73; /* Matches the theme */
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    border: none;
-    cursor: pointer;
-}
-
-.edit-button:hover {
-    background-color: #1D4D60; /* Slightly darker shade */
 }
