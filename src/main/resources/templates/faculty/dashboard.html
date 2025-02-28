@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Faculty Dashboard</title>
-    <link rel="stylesheet" href="/css/faculty-dashboard.css">
+    <link rel="stylesheet" th:href="@{/css/faculty-dashboard.css}" />
 </head>
 <body>
 <header>
     <h1>Faculty Dashboard</h1>
-    <a href="/" class="logout-btn">Logout</a>
+    <a href="/faculty/dashboard" class="nav-btn">Home</a>
+    <a href="/" class="nav-btn">Logout</a>
 </header>
 
-<div class="container">
-    <h2>Welcome, <span th:text="${faculty.name}"></span>!</h2>
-    <p><strong>Designation:</strong> <span th:text="${faculty.designation}"></span></p>
-    <p><strong>Email:</strong> <span th:text="${faculty.email}"></span></p>
-</div>
+<div class="dashboard-container">
+    <!-- Faculty Profile Section -->
+    <div class="profile-section">
+        <h2>Faculty Information</h2>
+        <p><strong>Name:</strong> <span th:text="${faculty.name}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${faculty.email}"></span></p>
+        <p><strong>Department:</strong> <span th:text="${faculty.department}"></span></p>
+    </div>
 
+    <!-- Faculty Schedule Section -->
+    <div class="schedule-section">
+        <h2>Weekly Schedule</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Day</th>
+                <th>Period 1</th>
+                <th>Period 2</th>
+                <th>Period 3</th>
+                <th>Period 4</th>
+                <th>Period 5</th>
+                <th>Period 6</th>
+                <th>Period 7</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="entry : ${schedule}">
+                <td th:text="${entry.day}"></td>
+                <td th:text="${entry.period1}"></td>
+                <td th:text="${entry.period2}"></td>
+                <td th:text="${entry.period3}"></td>
+                <td th:text="${entry.period4}"></td>
+                <td th:text="${entry.period5}"></td>
+                <td th:text="${entry.period6}"></td>
+                <td th:text="${entry.period7}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

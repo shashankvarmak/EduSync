@@ -1,6 +1,7 @@
 package com.example.FacultyFlow.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "faculty")
@@ -13,21 +14,15 @@ public class Faculty {
     private String name;
     private String designation;
     private String email;
-    private String password; // Added for authentication
-    private String department; // Added to link faculty to a department
+    private String password;
+    private String department;
 
-    // Default constructor (required for JPA)
+    @OneToMany(mappedBy = "faculty", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FacultySchedule> schedules;  // Faculty has multiple schedules
+
+    // Constructors
     public Faculty() {}
 
-    // Constructor without password (for displaying faculty)
-    public Faculty(String name, String designation, String email, String department) {
-        this.name = name;
-        this.designation = designation;
-        this.email = email;
-        this.department = department;
-    }
-
-    // Constructor with password (for authentication)
     public Faculty(String name, String designation, String email, String password, String department) {
         this.name = name;
         this.designation = designation;
@@ -54,4 +49,7 @@ public class Faculty {
 
     public String getDepartment() { return department; }
     public void setDepartment(String department) { this.department = department; }
+
+    public List<FacultySchedule> getSchedules() { return schedules; }
+    public void setSchedules(List<FacultySchedule> schedules) { this.schedules = schedules; }
 }

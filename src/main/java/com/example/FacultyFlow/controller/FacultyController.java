@@ -1,19 +1,25 @@
 package com.example.FacultyFlow.controller;
 
 import com.example.FacultyFlow.model.Faculty;
+import com.example.FacultyFlow.model.FacultySchedule;
 import com.example.FacultyFlow.repository.FacultyRepository;
+import com.example.FacultyFlow.service.FacultyScheduleService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class FacultyController {
 
     private final FacultyRepository facultyRepo;
+    private final FacultyScheduleService facultyScheduleService;
 
-    public FacultyController(FacultyRepository facultyRepo) {
+    public FacultyController(FacultyRepository facultyRepo ,FacultyScheduleService facultyScheduleService) {
         this.facultyRepo = facultyRepo;
+        this.facultyScheduleService=facultyScheduleService;
     }
 
     @GetMapping("/faculty/dashboard")
@@ -32,9 +38,14 @@ public class FacultyController {
             return "redirect:/login"; // Extra check to avoid errors
         }
 
-        // Pass faculty details to Thymeleaf
+        // Fetch faculty schedule from the database
+        List<FacultySchedule> schedule = facultyScheduleService.getScheduleByFaculty(faculty.getId());
+
+        // Pass faculty and schedule details to Thymeleaf
         model.addAttribute("faculty", faculty);
+        model.addAttribute("schedule", schedule);
 
         return "faculty/dashboard";
     }
+
 }
