@@ -53,3 +53,6 @@ public class Faculty {
     public List<FacultySchedule> getSchedules() { return schedules; }
     public void setSchedules(List<FacultySchedule> schedules) { this.schedules = schedules; }
 }
+
+
+

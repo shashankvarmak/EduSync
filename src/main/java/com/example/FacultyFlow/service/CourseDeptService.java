@@ -11,46 +11,34 @@ public class CourseDeptService {
     public CourseDeptService() {
         departmentCourses = new HashMap<>();
 
-        departmentCourses.put("IT", Arrays.asList(
-                "Data Structures", "Operating Systems", "Web Technologies", "Software Engineering", "Computer Networks",
-                "Data Structures Lab", "Web Technologies Lab"
-        ));
         departmentCourses.put("CSE", Arrays.asList(
-                "Algorithms", "Computer Networks", "Software Engineering", "Artificial Intelligence", "Database Systems",
-                "Algorithms Lab", "Database Lab"
+                "Networks", "DBMS", "Operating Systems", "Data Structures", "Database Lab","Data Structures Lab"
         ));
-        departmentCourses.put("CSC", Arrays.asList(
-                "Database Management", "Cloud Computing", "Cyber Security", "Big Data Analytics", "Mobile Computing",
-                "Cloud Computing Lab", "Cyber Security Lab"
+
+        departmentCourses.put("IT", Arrays.asList(
+                "Cloud Computing", "Web Tech", "AI", "Cybersecurity", "Web Lab", "Cloud Lab"
         ));
-        departmentCourses.put("CSD", Arrays.asList(
-                "Machine Learning", "Big Data Analytics", "Computer Vision", "Deep Learning", "Natural Language Processing",
-                "Machine Learning Lab", "Big Data Lab"
-        ));
-        departmentCourses.put("AIML", Arrays.asList(
-                "Artificial Intelligence", "Neural Networks", "Deep Learning", "Reinforcement Learning", "AI Ethics",
-                "Neural Networks Lab", "AI Programming Lab"
-        ));
+
         departmentCourses.put("ECE", Arrays.asList(
-                "Digital Circuits", "Analog Circuits", "Digital Signal Processing", "Microcontrollers", "VLSI Design",
-                "Digital Circuits Lab", "Digital Signal Processing Lab"
+                "Digital Comm", "Signals", "Embedded Systems", "VLSI", "Embedded Lab", "Circuits Lab"
         ));
+
         departmentCourses.put("EEE", Arrays.asList(
-                "Power Systems", "Control Systems", "Electrical Machines", "High Voltage Engineering", "Renewable Energy Systems",
-                "Power Systems Lab", "Electrical Machines Lab"
+                "Control Systems", "Power Systems", "Machines", "Circuits", "Power Lab", "Circuits Lab"
         ));
-        departmentCourses.put("MECH", Arrays.asList(
-                "Thermodynamics", "Fluid Mechanics", "Automobile Engineering", "Robotics", "Manufacturing Processes",
-                "Thermodynamics Lab", "Fluid Mechanics Lab"
-        ));
-        departmentCourses.put("CSM", Arrays.asList(
-                "Cryptography", "Blockchain Technology", "Ethical Hacking", "Cyber Forensics", "Digital Evidence Management",
-                "Cryptography Lab", "Ethical Hacking Lab"
-        ));
+
         departmentCourses.put("CSIT", Arrays.asList(
-                "Internet of Things", "Embedded Systems", "Cloud Security", "Network Security", "Wireless Communication",
-                "IoT Lab", "Embedded Systems Lab"
+                "OS", "Data Mining", "Algorithms", "Software Engg", "Algorithms Lab", "Software Lab"
         ));
+
+        departmentCourses.put("CSC", Arrays.asList(
+                "Machine Learning", "Cryptography", "Blockchain","Cloud Computing","IoT Lab", "Crypto Lab"
+        ));
+
+        departmentCourses.put("CSD", Arrays.asList(
+                "Big Data", "Statistics", "Visualization", "Data Science", "Big Data Lab", "Data Lab"
+        ));
+
     }
 
     public List<String> getCoursesByDepartment(String department) {
