@@ -1,20 +1,76 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #F2F0EF; /* Yacht Club background color */
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
-    background-color: #245F73;
+header {
+    background-color: #245F73; /* Deep Teal-Blue */
     color: white;
     padding: 15px;
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.nav-btn {
     color: white;
     text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
 }
 
+.nav-btn:hover {
+    text-decoration: underline;
 }
 
+.dashboard-container {
+    max-width: 90%;
+    margin: 30px auto;
     background: white;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section, .schedule-section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #245F73; /* Deep Teal-Blue */
+}
+
+/* Styling for the timetable */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #BBBDBC; /* Light Gray */
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #245F73; /* Deep Teal-Blue */
+    color: white;
+}
+
+td {
+    background-color: #F2F0EF; /* Off-White */
+}
+
+/* Alternating row colors for better readability */
+tbody tr:nth-child(even) {
+    background-color: #E0E0E0; /* Light Gray variant */
+}
+
+tbody tr:hover {
+    background-color: #BBBDBC; /* Highlight row on hover */
 }
