@@ -2,31 +2,66 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Faculty Flow</title>
+    <title>Online College Faculty Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <header>
-    <h1>Faculty Flow</h1>
-    <div class="nav-links">
-        <a href="/login">Login</a>
-        <a href="/signup">Sign Up</a>
+    <div class="navbar">
+        <h1 class="logo">EduSync</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/login">Faculties</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+            </ul>
+        </nav>
     </div>
 </header>
-<div class="container">
-    <img src="https://via.placeholder.com/600x200" alt="Welcome Image" class="image"> <!-- Placeholder for an image -->
-    <h2>Welcome!</h2>
-    <p>
-        This system helps manage faculty workloads efficiently.
-        Explore the functionalities and departments available.
-    </p>
-    <a href="/departments" class="button">Explore Departments</a>
-    <a href="/faculties" class="button">Manage Faculty</a>
-    <a href="/workloads" class="button">View Workloads</a>
-</div>
+
+<section class="hero">
+    <div class="content">
+        <h1>Faculty Record Management System</h1>
+        <p>View the details of college faculty.</p>
+        <button class="btn btn-warning">Contact Us</button>
+        <button class="btn btn-warning">Faculties</button>
+    </div>
+</section>
+
+
+<section class="about">
+    <h2>About Us</h2>
+    <p>A faculty management system is a software application that helps schools manage the administrative tasks associated with running a school or department. Standard features include tracking student enrollment, scheduling classes, and handling other administrative tasks.</p>
+    <a href="/about" class="btn">Learn More</a>
+</section>
+
 <footer>
-    <p>&copy; 2025 Faculty Management System</p>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>A faculty management system is a software application that helps schools manage their administrative tasks.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Information Links</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/faculties">Faculties</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/admin">Admin</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Details</h3>
+            <p>Email: ocfrmsinfo@test.com</p>
+            <p>Address: #890 CFO Apartment, Mayur Vihar, Delhi, India</p>
+            <p>Phone: +1234567890</p>
+        </div>
+    </div>
+    <p class="footer-bottom">&copy; 2025 Online College Faculty Record Management System</p>
 </footer>
 </body>
 </html>
