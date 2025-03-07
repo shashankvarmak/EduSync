@@ -10,26 +10,25 @@ body {
 /* Header */
 header {
     background: #2D3E50; /* Deep Blue-Gray */
-    color: white;
-    padding: 5px 20px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding:0;
+    margin:0;
 }
 
 .navbar {
-    position:fixed;
+    position: fixed;
     top: 0;
-    left : 0;
-    z-index:999;
-    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
-    align-items: center;
+    max-width: 1500px;  /* Limit the width to 1200px (or any value you choose) */
     padding: 10px 20px;
-    background-color: #2D3E50; /* Deep Blue-Gray */
-    justify-content: space-between;
+    background-color: #2D3E50;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .logo-container {
     display: flex;
@@ -38,30 +37,35 @@ header {
 }
 
 .logo {
-    height: 50px;
+    height: 40px;
     width: auto;
 }
 
 .logo-text {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     margin: 0;
+    color: white;
 }
 
 nav ul {
     list-style: none;
-    gap: 30px;
+    gap: 20px;
     padding: 0;
     margin: 0;
     display: flex;
+}
+
+nav{
+    margin-left: auto;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 18px;
-    padding: 10px 15px;
+    font-size: 16px;
+    padding: 8px 12px;
     display: inline-block;
 }
 
@@ -71,14 +75,15 @@ nav ul li a:hover {
 
 /* Hero Section */
 .hero {
+    margin-top:60px;
     background-color: #FFFFFF !important;
     background-size: cover;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 80px;
+    margin-top: 60px;
     position: relative;
     z-index: 1;
 }
@@ -89,7 +94,9 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 80%;
+    margin: 50px;
+    padding: 20px;
     background: none; /* Dark overlay */
 }
 
@@ -98,8 +105,8 @@ nav ul li a:hover {
     align-items: center;
     justify-content: space-between;
     width: 80%;
-    margin: auto;
-    padding: 50px 0;
+    margin: 50px;
+    padding: 20px 0;
 }
 
 .hero .content h1 {
@@ -128,7 +135,7 @@ nav ul li a:hover {
 
 .gif-box img {
     width: 100%; /* Make it responsive */
-    max-width: 350px; /* Adjust to match your design */
+    max-width: 450px; /* Adjust to match your design */
 }
 
 /* Buttons */
