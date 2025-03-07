@@ -27,7 +27,6 @@ public class DepartmentService {
                 new Department("Computer Science and Cyber Security", "CSC", getFacultyByDepartment("CSC")),
                 new Department("Computer Science and Design", "CSD", getFacultyByDepartment("CSD")),
                 new Department("Electrical and Electronics Engineering", "EEE", getFacultyByDepartment("EEE")),
-                new Department("Mechanical Engineering", "MECH", getFacultyByDepartment("MECH")),
                 new Department("Computer Science and Information Technology", "CSIT", getFacultyByDepartment("CSIT"))
         );
     }
