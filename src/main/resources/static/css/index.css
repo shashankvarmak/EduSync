@@ -7,6 +7,15 @@ body {
     padding: 0;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 100%;
+}
+
+
 /* Header */
 header {
     background: #2D3E50; /* Deep Blue-Gray */
@@ -15,18 +24,36 @@ header {
 }
 
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 1500px;  /* Limit the width to 1200px (or any value you choose) */
+    display: flex;
+    justify-content: space-between; /* Aligns items correctly */
+    align-items: center; /* Vertically centers items */
     padding: 10px 20px;
     background-color: #2D3E50;
-    z-index: 999;
+    width: 99%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
     display: flex;
+    gap: 20px; /* Adds space between links */
     align-items: center;
-    justify-content: center;
+    margin: 0;
+    padding: 0;
+    padding-right:20px;
+}
+
+.navbar-container {
+    max-width: 1200px; /* Keeps content centered */
+    margin: 0 auto; /* Centers the navbar content */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
 
@@ -34,6 +61,7 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 20px;
 }
 
 .logo {
@@ -78,7 +106,7 @@ nav ul li a:hover {
     margin-top:60px;
     background-color: #FFFFFF !important;
     background-size: cover;
-    height: 90vh;
+    height: 91vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +132,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
+    width: 95%;
     margin: 50px;
     padding: 20px 0;
 }
@@ -117,7 +145,7 @@ nav ul li a:hover {
 }
 
 .hero .content p {
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 25px;
     color: #2D3E50;
 }
@@ -147,9 +175,8 @@ nav ul li a:hover {
     text-decoration: none;
     border-radius: 5px;
     margin: 10px;
-    transition: background 0.3s;
     border: none;
-    cursor: pointer;
+    cursor:pointer;
 }
 
 .btn:hover {
@@ -157,14 +184,67 @@ nav ul li a:hover {
 }
 
 /* About Section */
-.about {
-    text-align: center;
-    padding: 50px 20px;
-    background: #c7edff; /* Soft Blue */
+
+html {
+    scroll-behavior: smooth;
 }
 
-.about h2 {
+.about-section {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     height: 91vh;
+     padding: 50px;
+     box-sizing:border-box;
+     background: #c7edff; /* Soft Blue */
+     flex-direction: row-reverse; /* This moves the image to the left and text to the right */
+ }
+
+
+.about-content {
+    width: 50%;
+    padding:20px;
+   margin-left:-20px;
+    padding-left:0;
+
+}
+
+.about-content h2 {
+     font-size: 2rem;
+     font-weight: bold;
     color: #2D3E50;
+}
+
+.about-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.learn-more {
+    background-color: #203038; /* Your accent color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.about-image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.about-image img {
+    width: 60%;
+    justify-content:center;
+    height: auto;
+    border-radius: 10px;
+    margin-right:50px;
+    padding:0;
 }
 
 /* Footer */
@@ -173,6 +253,7 @@ footer {
     color: white;
     text-align: center;
     padding: 20px;
+    height: 40vh;
 }
 
 .footer-container {
