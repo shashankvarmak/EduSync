@@ -11,11 +11,11 @@ body {
         position: fixed;
          top: 0;
          left: 0;
-         width: 100%;
-         height: 80px;
-         background-color: #245F73;
+         width: 97%;
+         height: 70px;
+         background-color: #2D3E50;
          color: white;
-         padding: 15px 30px;
+         padding: 0 20px;
          display: flex;
          justify-content: space-between;
          align-items: center;
@@ -31,7 +31,7 @@ body {
 /* Dashboard & Logout Alignment */
 .header-right {
     display: flex;
-    gap: 20px;
+    gap: 19px;
     align-items: center;
 }
 
@@ -39,7 +39,7 @@ body {
 .header-nav {
     display: flex;
     align-items : center;
-    gap: 20px; /* Adds space between links */
+    gap: 19px; /* Adds space between links */
     flex-grow: 1;
     justify-content: flex-end;
 }

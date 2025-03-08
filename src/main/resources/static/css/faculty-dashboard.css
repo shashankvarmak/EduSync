@@ -10,6 +10,7 @@ header {
     background-color: #245F73; /* Deep Teal-Blue */
     color: white;
     padding: 15px;
+    height: 70px;
     font-size: 22px;
     display: flex;
     justify-content: space-between;
