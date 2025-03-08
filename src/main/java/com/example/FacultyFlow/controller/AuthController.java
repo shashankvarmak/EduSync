@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 public class AuthController {
 
     private final UserRepo userRepo;
-    private final FacultyRepository facultyRepo; // Repository for faculty
+    private final FacultyRepository facultyRepo;
 
     public AuthController(UserRepo userRepo, FacultyRepository facultyRepo) {
         this.userRepo = userRepo;
@@ -21,34 +21,43 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String processLogin(@RequestParam String email,
+    public String processLogin(@RequestParam String role,
+                               @RequestParam String email,
                                @RequestParam String password,
                                HttpSession session,
                                Model model) {
-        // First, check if the user is a student
-        User student = userRepo.findByEmail(email);
-        if (student != null && student.getPassword().equals(password)) {
+        System.out.println("🔍 Login attempt: Role = " + role + ", Email = " + email);
+
+        if ("student".equalsIgnoreCase(role)) {
+            // Check in users table
+            User student = userRepo.findByEmail(email);
+            if (student == null || !student.getPassword().equals(password)) {
+                model.addAttribute("error", "Invalid student email or password!");
+                return "login";
+            }
             session.setAttribute("loggedInUserEmail", student.getEmail());
             session.setAttribute("role", "STUDENT");
             return "redirect:/student/dashboard";
-        }
 
-        // If not a student, check if the user is a faculty member
-        Faculty faculty = facultyRepo.findByEmail(email);
-        if (faculty != null && faculty.getPassword().equals(password)) {
+        } else if ("faculty".equalsIgnoreCase(role)) {
+            // Check in faculty table
+            Faculty faculty = facultyRepo.findByEmail(email);
+            if (faculty == null || !faculty.getPassword().equals(password)) {
+                model.addAttribute("error", "Invalid faculty email or password!");
+                return "login";
+            }
             session.setAttribute("loggedInUserEmail", faculty.getEmail());
             session.setAttribute("role", "FACULTY");
             return "redirect:/faculty/dashboard";
         }
 
-        // If neither student nor faculty, return login error
-        model.addAttribute("error", "Invalid email or password!");
+        model.addAttribute("error", "Invalid role selected!");
         return "login";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate(); // Clear session data
-        return "redirect:/login"; // Redirect to login page after logout
+        return "redirect:/login";
     }
 }

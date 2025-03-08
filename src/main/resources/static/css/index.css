@@ -30,6 +30,7 @@ header {
     padding: 10px 20px;
     background-color: #2D3E50;
     width: 99%;
+    height:50px;
     position: fixed;
     top: 0;
     left: 0;
@@ -70,7 +71,7 @@ header {
 }
 
 .logo-text {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     margin: 0;
     color: white;
@@ -92,7 +93,7 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     padding: 8px 12px;
     display: inline-block;
 }

@@ -48,5 +48,24 @@
 <footer>
     <p>&copy; 2025 Faculty Management System</p>
 </footer>
+
+<div id="errorPopup" class="error-popup" th:if="${error}">
+    <p th:text="${error}"></p>
+    <button onclick="closePopup()">✖</button>
+</div>
+
+<script>
+    function closePopup() {
+     var popup = document.getElementById("errorPopup");
+     if (popup) {
+         popup.style.animation = "fadeOut 0.5s ease-in-out";
+         setTimeout(() => popup.style.display = "none", 500);
+     }
+ }
+
+ setTimeout(closePopup, 5000);
+
+</script>
+
 </body>
 </html>

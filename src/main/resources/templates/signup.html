@@ -18,40 +18,71 @@
 <div class="container">
     <h2>Sign Up</h2>
     <p>Create an account to manage faculty workloads.</p>
+
     <form action="/signup" method="post">
-        <label for="name"><i class="fas fa-user"></i> Full Name:</label>
-        <input type="text" id="name" name="name" required>
+        <div class="input-container">
+            <i class="fas fa-user"></i>
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+        </div>
 
-        <label for="email"><i class="fas fa-envelope"></i> Email:</label>
-        <input type="email" id="email" name="email" required>
+        <div class="input-container">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
 
-        <label for="rollNo"><i class="fas fa-id-badge"></i> Roll Number:</label>
-        <input type="text" id="rollNo" name="rollNo" required>
+        <div class="input-container">
+            <i class="fas fa-id-badge"></i>
+            <input type="text" id="rollNo" name="rollNo" placeholder="Roll Number" required>
+        </div>
 
-        <label for="department"><i class="fas fa-building"></i> Department:</label>
-        <select id="department" name="department" required>
-            <option value="" disabled selected>Select your department</option>
-            <option value="CSE">CSE</option>
-            <option value="CSIT">CSIT</option>
-            <option value="CSM">CSM</option>
-            <option value="AIML">AIML</option>
-            <option value="IT">IT</option>
-            <option value="CSD">CSD</option>
-            <option value="CSC">CSC</option>
-            <option value="EEE">EEE</option>
-            <option value="ECE">ECE</option>
-            <option value="MECH">MECH</option>
-        </select>
+        <div class="input-container">
+            <i class="fas fa-building"></i>
+            <select id="department" name="department" required>
+                <option value="" disabled selected>Select your department</option>
+                <option value="CSE">CSE</option>
+                <option value="CSIT">CSIT</option>
+                <option value="CSM">CSM</option>
+                <option value="AIML">AIML</option>
+                <option value="IT">IT</option>
+                <option value="CSD">CSD</option>
+                <option value="CSC">CSC</option>
+                <option value="EEE">EEE</option>
+                <option value="ECE">ECE</option>
+                <option value="MECH">MECH</option>
+            </select>
+        </div>
 
-        <label for="password"><i class="fas fa-lock"></i> Password:</label>
-        <input type="password" id="password" name="password" required>
+        <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
 
         <button type="submit" class="button">Sign Up</button>
     </form>
-    <p>Already have an account? <a href="/login">Login</a></p>
+    <p class="signup-link">Already have an account? <a href="/login">Login</a></p>
+
+
 </div>
 <footer>
     <p>&copy; 2025 Faculty Management System</p>
 </footer>
+
+<div id="errorPopup" class="error-popup" th:if="${signupError}">
+    <p th:text="${signupError}"></p>
+    <button onclick="closePopup()">✖</button>
+</div>
+
+<script>
+    function closePopup() {
+        var popup = document.getElementById("errorPopup");
+        if (popup) {
+            popup.style.animation = "fadeOut 0.5s ease-in-out";
+            setTimeout(() => popup.style.display = "none", 500);
+        }
+    }
+
+    setTimeout(closePopup, 5000);
+</script>
+
 </body>
 </html>

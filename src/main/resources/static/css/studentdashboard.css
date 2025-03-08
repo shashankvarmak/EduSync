@@ -7,28 +7,89 @@ body {
     text-align: center;
 }
 
+
+/* Header */
 header {
-    background-color: #245F73;
-    color: white;
-    padding: 15px;
-    font-size: 22px;
+    background: #2D3E50; /* Deep Blue-Gray */
+    padding:0;
+    margin:0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Aligns items correctly */
+    align-items: center; /* Vertically centers items */
+    padding: 10px 20px;
+    background-color: #2D3E50;
+    width: 99%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Adds space between links */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    padding-right:20px;
+}
+
+.navbar-container {
+    max-width: 1200px; /* Keeps content centered */
+    margin: 0 auto; /* Centers the navbar content */
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
-header h1 {
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 26px;
+    font-weight: bold;
     margin: 0;
+    color: white;
 }
 
-.logout-btn {
+nav ul {
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav{
+    margin-left: auto;
+}
+
+nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    margin-left: 15px;
+    font-size: 17px;
+    padding: 8px 12px;
+    display: inline-block;
 }
 
-.logout-btn:hover {
+nav ul li a:hover {
     text-decoration: underline;
 }
 
@@ -36,8 +97,8 @@ header h1 {
     display: flex;
     justify-content: space-between;
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 120px auto;
+    padding: 30px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -57,7 +118,7 @@ header h1 {
 }
 
 .profile-section h2 {
-    color: #245F73;
+    color: #2D3E50;
     margin-bottom: 15px;
 }
 
@@ -70,7 +131,7 @@ header h1 {
     display: inline-block;
     margin-top: 10px;
     padding: 8px 16px;
-    background-color: #245F73;
+    background-color: #2D3E50;
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -91,7 +152,7 @@ header h1 {
 }
 
 .courses-section h2 {
-    color: #245F73;
+    color: #2D3E50;
     margin-bottom: 15px;
 }
 
@@ -109,7 +170,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #245F73;
+    background-color: #2D3E50;
     color: white;
     font-weight: bold;
 }

@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #F2F0EF;
     margin: 0;
     padding: 0;
@@ -9,8 +9,12 @@ body {
 
 /* Header */
 header {
-    background-color: #245F73;
-    padding: 15px;
+    background-color: #2D3E50;
+    height: 70px;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -21,73 +25,165 @@ header {
     color: white;
     text-decoration: none;
     margin: 0 15px;
-    font-weight: bold;
+    font-size: 18px;
 }
 
 .nav-links a:hover {
     text-decoration: underline;
 }
 
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
 /* Signup Container */
 .container {
-    background-color: white;
+    background: white;
     padding: 30px;
-    margin: 50px auto;
-    width: 400px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #854a2d; /* Brown accent */
+    margin:20px;
+    width: 380px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 h2 {
-    color: #245F73;
+    color: #2D3E50;
+    font-size: 26px;
+    margin: 5px;
 }
 
 p {
-    color: #555;
+    color: #666;
+    font-size: 14px;
 }
 
-/* Form Styles */
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
-label {
-    text-align: left;
-    font-size: 16px;
-    color: #444;
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
 }
 
 input, select {
-    padding: 10px;
-    border: 1px solid #BBBDBC;
-    border-radius: 5px;
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
     font-size: 14px;
-    width: 90%;
+    background: #f9f9f9;
+    box-sizing: border-box;
 }
 
-/* Button */
-.button {
-    background-color: #245F73;
+input:focus, select:focus {
+    outline: none;
+    border-color: #17A2B8;
+}
+
+/* Button Styling */
+button {
+    background: #2D3E50;
     color: white;
     border: none;
-    height:70px;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
-    width: 100%;
+    transition: 0.3s;
 }
 
-.button:hover {
-    background-color: #1F4E5E;
+button:hover {
+    background: #203038;
+}
+
+/* Login Link */
+.login-link {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #17A2B8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
 }
 
 /* Footer */
 footer {
-    margin-top: 20px;
+    margin-top: 540px;
     font-size: 14px;
     color: #777;
+    text-align: center;
+    padding: 3px;
+}
+
+.error-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #c7edff;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.error-popup button {
+    background: none;
+    border: none;
+    color: #2D3E50;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 }
