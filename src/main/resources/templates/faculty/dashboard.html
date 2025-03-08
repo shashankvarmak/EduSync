@@ -10,7 +10,8 @@
 <header>
     <h1>Faculty Dashboard</h1>
     <a href="/faculty/dashboard" class="nav-btn">Home</a>
-    <a href="/" class="nav-btn">Logout</a>
+    <a href="/messages" class="nav-btn">Messages</a> <!-- NEW BUTTON -->
+    <a href="/logout" class="nav-btn">Logout</a>
 </header>
 
 <div class="dashboard-container">
@@ -20,6 +21,24 @@
         <p><strong>Name:</strong> <span th:text="${faculty.name}"></span></p>
         <p><strong>Email:</strong> <span th:text="${faculty.email}"></span></p>
         <p><strong>Department:</strong> <span th:text="${faculty.department}"></span></p>
+    </div>
+    <!-- Faculty Courses Section -->
+    <div class="courses-section">
+        <h2>Assigned Courses</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Course Code</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="course : ${faculty.courses}">
+                <td th:text="${course.courseName}"></td>
+                <td th:text="${course.courseCode}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- Faculty Schedule Section -->
@@ -55,3 +74,7 @@
 </div>
 </body>
 </html>
+
+
+
+
