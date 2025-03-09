@@ -55,6 +55,7 @@
         });
     });
 
+    // Function to load the chat for the selected user
     function loadChat(element) {
         receiverEmail = element.getAttribute("data-email");
         document.getElementById("chatTitle").innerText = "Chat with " + receiverEmail;
@@ -75,6 +76,7 @@
             });
     }
 
+    // Function to send a message
     function sendMessage() {
         const senderEmail = document.getElementById("senderEmail").value;
         const messageInput = document.getElementById("messageInput").value;
@@ -89,14 +91,19 @@
 
         stompClient.send("/app/sendMessage", {}, JSON.stringify(message));
         document.getElementById("messageInput").value = ''; // Clear input
+
+        // Display the message in the sender's chat instantly
+        updateChat(message);
     }
 
+    // Function to update the chat UI with the new message
     function updateChat(message) {
         if (message.receiverEmail === receiverEmail || message.senderEmail === receiverEmail) {
             let messageDiv = document.createElement("div");
             messageDiv.classList.add(message.senderEmail === document.getElementById("senderEmail").value ? "sent" : "received");
             messageDiv.innerHTML = `<strong>${message.senderEmail}:</strong> ${message.content}`;
             document.getElementById("messageContainer").appendChild(messageDiv);
+            document.getElementById("messageContainer").scrollTop = document.getElementById("messageContainer").scrollHeight; // Auto-scroll to the bottom
         }
     }
 </script>
