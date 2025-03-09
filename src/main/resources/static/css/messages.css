@@ -128,3 +128,16 @@ body {
 .back-to-inbox:hover {
     background: #1b4a5a;
 }
+.back-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}

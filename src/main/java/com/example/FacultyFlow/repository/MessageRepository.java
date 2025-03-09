@@ -15,6 +15,7 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
             "SELECT DISTINCT m.receiverEmail FROM Message m WHERE m.senderEmail = :email")
     List<String> findDistinctChatUsers(String email);
 
+
     @Query("SELECT m FROM Message m WHERE " +
             "(m.senderEmail = :senderEmail AND m.receiverEmail = :receiverEmail) " +
             "OR (m.senderEmail = :receiverEmail AND m.receiverEmail = :senderEmail) " +

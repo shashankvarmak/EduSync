@@ -26,23 +26,19 @@ public class MessageController {
     @GetMapping
     public String showInbox(HttpSession session, Model model) {
         String loggedInEmail = (String) session.getAttribute("loggedInUserEmail");
-        String role = (String) session.getAttribute("role"); // Get role
 
         if (loggedInEmail == null) {
-            return "redirect:/login"; // Redirect if not logged in
+            return "redirect:/login";
         }
 
-        if ("STUDENT".equals(role)) {
-            // If student, show all faculty
-            List<Faculty> facultyList = facultyService.getAllFaculty();
-            model.addAttribute("facultyList", facultyList);
-        } else {
-            // If faculty, show past conversations
-            List<String> chatUsers = messageService.getChatUsers(loggedInEmail);
-            model.addAttribute("chatUsers", chatUsers);
-        }
+        // Fetch chat users
+        List<String> chatUsers = messageService.getChatUsers(loggedInEmail);
+        model.addAttribute("chatUsers", chatUsers);
 
-        model.addAttribute("role", role); // Pass role to Thymeleaf
+        // Fetch faculty list (so students can start a conversation)
+        List<Faculty> facultyList = facultyService.getAllFaculty();
+        model.addAttribute("facultyList", facultyList);
+
         return "messages/inbox";
     }
 

@@ -47,5 +47,10 @@ public class FacultyController {
 
         return "faculty/dashboard";
     }
+    @GetMapping("/faculty/list")
+    public List<Faculty> getAllFaculty() {
+        return facultyRepo.findAll();
+    }
+
 
 }

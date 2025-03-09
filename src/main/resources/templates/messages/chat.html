@@ -3,21 +3,27 @@
 <head>
     <title>Chat</title>
     <link rel="stylesheet" th:href="@{/css/messages.css}">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+    <script src="/js/messages.js" defer></script>
 </head>
 <body>
-<h1>Chat with <span th:text="${receiverEmail}"></span></h1>
+<header>
+    <h1>Chat with <span th:text="${receiverEmail}"></span></h1>
+    <a href="/messages" class="back-btn">Back to Inbox</a>
+</header>
 
-<div class="chat-box">
+
+<input type="hidden" id="senderEmail" th:value="${session.loggedInUserEmail}">
+<input type="hidden" id="receiverEmail" th:value="${receiverEmail}">
+
+<div class="chat-box" id="chatBox">
     <div th:each="message : ${conversation}" class="message">
-        <p><strong th:text="${message.senderEmail}"></strong>:
-            <span th:text="${message.content}"></span></p>
+        <p><strong th:text="${message.senderEmail}"></strong>: <span th:text="${message.content}"></span></p>
     </div>
 </div>
 
-<form action="/messages/send" method="post">
-    <input type="hidden" name="receiverEmail" th:value="${receiverEmail}">
-    <textarea name="content" required></textarea>
-    <button type="submit">Send</button>
-</form>
+<textarea id="messageInput" required></textarea>
+<button onclick="sendMessage()">Send</button>
 </body>
 </html>

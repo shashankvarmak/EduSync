@@ -3,7 +3,6 @@ package com.example.FacultyFlow.service;
 import com.example.FacultyFlow.model.Faculty;
 import com.example.FacultyFlow.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

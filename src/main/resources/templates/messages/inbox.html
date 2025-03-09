@@ -3,25 +3,81 @@
 <head>
     <title>Inbox</title>
     <link rel="stylesheet" th:href="@{/css/messages.css}">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+    <script src="/js/messages.js" defer></script>
 </head>
 <body>
 <header>
     <h1>Inbox</h1>
-    <a href="/dashboard" class="nav-btn">Home</a>
-    <a href="/logout" class="nav-btn">Logout</a>
+    <a th:if="${session.role == 'STUDENT'}" th:href="@{/student/dashboard}" class="back-btn">Back to Dashboard</a>
+    <a th:if="${session.role == 'FACULTY'}" th:href="@{/faculty/dashboard}" class="back-btn">Back to Dashboard</a>
+    <a href="/" class="nav-btn">Logout</a>
 </header>
 
-<h2>Your Conversations</h2>
-<ul>
-    <!-- If logged-in user is a faculty, show past conversations -->
-    <li th:each="user : ${chatUsers}" th:if="${role == 'FACULTY'}">
-        <a th:href="@{/messages/chat/{email}(email=${user})}" th:text="${user}"></a>
-    </li>
 
-    <!-- If logged-in user is a student, show faculty list -->
-    <li th:each="faculty : ${facultyList}" th:if="${role == 'STUDENT'}">
-        <a th:href="@{/messages/chat/{email}(email=${faculty.email})}" th:text="${faculty.name}"></a>
-    </li>
-</ul>
+
+<div class="inbox-container">
+    <h2>Your Conversations</h2>
+
+    <!-- New Message Button -->
+    <button class="new-message-btn" onclick="toggleFacultyList()">New Message</button>
+
+    <!-- Faculty List (Initially Hidden) -->
+    <div id="facultyListContainer" class="faculty-list-container" style="display: none;">
+        <h3>Select a Faculty Member</h3>
+        <ul>
+            <li th:each="faculty : ${facultyList}">
+                <span th:text="${faculty.name} + ' (' + ${faculty.email} + ')'"></span>
+                <button th:attr="onclick='window.location.href=\'/messages/chat/' + @{${faculty.email}} + '\''">
+                    Message
+                </button>
+
+            </li>
+        </ul>
+    </div>
+
+    <ul id="chatUserList">
+        <li th:each="user : ${chatUsers}">
+            <a th:href="@{'/messages/chat/' + ${user}}" th:text="${user}"></a>
+        </li>
+    </ul>
+</div>
+
+<input type="hidden" id="loggedInEmail" th:value="${session.loggedInUserEmail}">
+
+<script>
+    function toggleFacultyList() {
+        const facultyListContainer = document.getElementById("facultyListContainer");
+        facultyListContainer.style.display = (facultyListContainer.style.display === "none") ? "block" : "none";
+    }
+
+    // ✅ WebSocket Integration for Live Updates
+    const loggedInEmail = document.getElementById("loggedInEmail").value;
+    const socket = new SockJS('/ws');
+    const stompClient = Stomp.over(socket);
+
+    stompClient.connect({}, function () {
+        console.log("Connected to WebSocket Inbox");
+
+        // Subscribe to listen for new messages
+        stompClient.subscribe(`/user/${loggedInEmail}/queue/messages`, function (message) {
+            const receivedMessage = JSON.parse(message.body);
+            updateInbox(receivedMessage);
+        });
+    });
+
+    function updateInbox(message) {
+        const chatUserList = document.getElementById("chatUserList");
+
+        let userItem = [...chatUserList.children].find(li => li.innerText === message.senderEmail);
+
+        if (!userItem) {
+            let newUserItem = document.createElement("li");
+            newUserItem.innerHTML = `<a href="/messages/chat/${message.senderEmail}">${message.senderEmail} <span class="new-message">NEW</span></a>`;
+            chatUserList.prepend(newUserItem);
+        }
+    }
+</script>
 </body>
 </html>
