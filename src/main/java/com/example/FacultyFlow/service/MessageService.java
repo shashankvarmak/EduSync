@@ -32,12 +32,14 @@ public class MessageService {
     }
 
     public void sendMessage(String sender, String receiver, String content) {
+        System.out.println("Saving message: " + sender + " -> " + receiver + " : " + content);
+
         Message message = new Message(sender, receiver, content);
         messageRepository.save(message);
-
-        // Notify the receiver in real-time using WebSocket
-        messagingTemplate.convertAndSendToUser(receiver, "/queue/messages", message);
     }
+
+
+
 
     public void saveMessage(Message message) {
         messageRepository.save(message);

@@ -8,76 +8,98 @@
     <script src="/js/messages.js" defer></script>
 </head>
 <body>
+
 <header>
     <h1>Inbox</h1>
-    <a th:if="${session.role == 'STUDENT'}" th:href="@{/student/dashboard}" class="back-btn">Back to Dashboard</a>
-    <a th:if="${session.role == 'FACULTY'}" th:href="@{/faculty/dashboard}" class="back-btn">Back to Dashboard</a>
+    <a th:href="${session.role == 'STUDENT' ? '/student/dashboard' : '/faculty/dashboard'}" class="nav-btn">Back to Dashboard</a>
     <a href="/" class="nav-btn">Logout</a>
 </header>
 
-
-
-<div class="inbox-container">
-    <h2>Your Conversations</h2>
-
-    <!-- New Message Button -->
-    <button class="new-message-btn" onclick="toggleFacultyList()">New Message</button>
-
-    <!-- Faculty List (Initially Hidden) -->
-    <div id="facultyListContainer" class="faculty-list-container" style="display: none;">
-        <h3>Select a Faculty Member</h3>
-        <ul>
-            <li th:each="faculty : ${facultyList}">
-                <span th:text="${faculty.name} + ' (' + ${faculty.email} + ')'"></span>
-                <button th:attr="onclick='window.location.href=\'/messages/chat/' + @{${faculty.email}} + '\''">
-                    Message
-                </button>
-
+<div class="chat-container">
+    <!-- Left Sidebar (User List) -->
+    <div class="user-list">
+        <h3>Your Conversations</h3>
+        <ul id="chatUserList">
+            <li th:each="user : ${chatUsers}" th:attr="data-email=${user}" onclick="loadChat(this)">
+                <span th:text="${user}"></span>
             </li>
         </ul>
     </div>
 
-    <ul id="chatUserList">
-        <li th:each="user : ${chatUsers}">
-            <a th:href="@{'/messages/chat/' + ${user}}" th:text="${user}"></a>
-        </li>
-    </ul>
+    <!-- Right Side (Chat Box) -->
+    <div class="chat-box" id="chatBox">
+        <h3 id="chatTitle">Select a conversation</h3>
+        <div id="messageContainer"></div>
+
+        <div class="message-input">
+            <input type="hidden" id="senderEmail" th:value="${session.loggedInUserEmail}">
+            <input type="hidden" id="receiverEmail">
+            <textarea id="messageInput" placeholder="Type a message..."></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 </div>
 
-<input type="hidden" id="loggedInEmail" th:value="${session.loggedInUserEmail}">
-
 <script>
-    function toggleFacultyList() {
-        const facultyListContainer = document.getElementById("facultyListContainer");
-        facultyListContainer.style.display = (facultyListContainer.style.display === "none") ? "block" : "none";
-    }
-
-    // ✅ WebSocket Integration for Live Updates
-    const loggedInEmail = document.getElementById("loggedInEmail").value;
     const socket = new SockJS('/ws');
     const stompClient = Stomp.over(socket);
+    let receiverEmail = '';
 
     stompClient.connect({}, function () {
-        console.log("Connected to WebSocket Inbox");
+        console.log("Connected to WebSocket");
 
-        // Subscribe to listen for new messages
-        stompClient.subscribe(`/user/${loggedInEmail}/queue/messages`, function (message) {
+        // Subscribe to receive messages
+        stompClient.subscribe("/topic/messages", function (message) {
             const receivedMessage = JSON.parse(message.body);
-            updateInbox(receivedMessage);
+            updateChat(receivedMessage);
         });
     });
 
-    function updateInbox(message) {
-        const chatUserList = document.getElementById("chatUserList");
+    function loadChat(element) {
+        receiverEmail = element.getAttribute("data-email");
+        document.getElementById("chatTitle").innerText = "Chat with " + receiverEmail;
+        document.getElementById("receiverEmail").value = receiverEmail;
 
-        let userItem = [...chatUserList.children].find(li => li.innerText === message.senderEmail);
+        // Fetch previous chat messages
+        fetch(`/messages/chat/${receiverEmail}`)
+            .then(response => response.json())
+            .then(messages => {
+                const messageContainer = document.getElementById("messageContainer");
+                messageContainer.innerHTML = '';
+                messages.forEach(msg => {
+                    let messageDiv = document.createElement("div");
+                    messageDiv.classList.add(msg.senderEmail === document.getElementById("senderEmail").value ? "sent" : "received");
+                    messageDiv.innerHTML = `<strong>${msg.senderEmail}:</strong> ${msg.content}`;
+                    messageContainer.appendChild(messageDiv);
+                });
+            });
+    }
 
-        if (!userItem) {
-            let newUserItem = document.createElement("li");
-            newUserItem.innerHTML = `<a href="/messages/chat/${message.senderEmail}">${message.senderEmail} <span class="new-message">NEW</span></a>`;
-            chatUserList.prepend(newUserItem);
+    function sendMessage() {
+        const senderEmail = document.getElementById("senderEmail").value;
+        const messageInput = document.getElementById("messageInput").value;
+
+        if (!receiverEmail || !messageInput.trim()) return;
+
+        const message = {
+            senderEmail: senderEmail,
+            receiverEmail: receiverEmail,
+            content: messageInput
+        };
+
+        stompClient.send("/app/sendMessage", {}, JSON.stringify(message));
+        document.getElementById("messageInput").value = ''; // Clear input
+    }
+
+    function updateChat(message) {
+        if (message.receiverEmail === receiverEmail || message.senderEmail === receiverEmail) {
+            let messageDiv = document.createElement("div");
+            messageDiv.classList.add(message.senderEmail === document.getElementById("senderEmail").value ? "sent" : "received");
+            messageDiv.innerHTML = `<strong>${message.senderEmail}:</strong> ${message.content}`;
+            document.getElementById("messageContainer").appendChild(messageDiv);
         }
     }
 </script>
+
 </body>
 </html>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -35,26 +36,23 @@ public class MessageController {
         List<String> chatUsers = messageService.getChatUsers(loggedInEmail);
         model.addAttribute("chatUsers", chatUsers);
 
-        // Fetch faculty list (so students can start a conversation)
-        List<Faculty> facultyList = facultyService.getAllFaculty();
-        model.addAttribute("facultyList", facultyList);
-
         return "messages/inbox";
     }
 
     @GetMapping("/chat/{email}")
-    public String showConversation(@PathVariable String email, HttpSession session, Model model) {
+    @ResponseBody
+    public List<Message> getConversation(@PathVariable String email, HttpSession session) {
         String loggedInEmail = (String) session.getAttribute("loggedInUserEmail");
 
         if (loggedInEmail == null) {
-            return "redirect:/login";
+            return new ArrayList<>(); // Return empty if not logged in
         }
 
-        List<Message> conversation = messageService.getConversation(loggedInEmail, email);
-        model.addAttribute("conversation", conversation);
-        model.addAttribute("receiverEmail", email);
-        return "messages/chat";
+        return messageService.getConversation(loggedInEmail, email);
     }
+
+
+
 
     @PostMapping("/send")
     public String sendMessage(@RequestParam String receiverEmail,

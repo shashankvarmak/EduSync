@@ -1,143 +1,161 @@
-/* General Styles */
+/* General Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #F2F0EF;
+    background-color: #f0f2f5;
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 
-/* Common Container for Inbox & Chat */
-.messages-container {
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+/* Header */
+header {
+    background-color: #075e54;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
 }
 
-/* ===== INBOX STYLES ===== */
-
-/* Inbox Header */
-.inbox-header {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 22px;
+.nav-btn {
+    text-decoration: none;
+    color: white;
+    margin-left: 15px;
     font-weight: bold;
-    color: #245F73;
 }
 
-/* Inbox Message List */
-.message-list {
+/* Chat Container */
+.chat-container {
+    display: flex;
+    height: 85vh;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Sidebar (User List) */
+.user-list {
+    width: 30%;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.user-list h3 {
+    text-align: center;
+    color: #075e54;
+}
+
+.user-list ul {
     list-style: none;
     padding: 0;
 }
 
-.message-list li {
-    background: #f9f9f9;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 5px solid #245F73;
+.user-list li {
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s;
 }
 
-.message-list li a {
-    text-decoration: none;
-    color: #245F73;
+.user-list li:hover {
+    background-color: #f0f0f0;
+}
+
+.user-list li span {
     font-weight: bold;
-    transition: color 0.3s ease;
+    color: #333;
 }
 
-.message-list li a:hover {
-    color: #1b4a5a;
+/* Chat Box */
+.chat-box {
+    flex: 1;
+    background-color: #e5ddd5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* ===== CHAT STYLES ===== */
+.chat-box h3 {
+    background-color: #128c7e;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin: 0;
+}
 
-/* Chat Messages Section */
-.chat-messages {
-    height: 400px;
+#messageContainer {
+    flex-grow: 1;
     overflow-y: auto;
     padding: 10px;
-    border: 1px solid #ddd;
-    background: #f9f9f9;
-    border-radius: 5px;
-}
-
-/* Individual Messages */
-.message {
-    background: #e6f2ff;
-    padding: 8px;
-    margin: 5px 0;
-    border-radius: 5px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
 }
 
-.message.sent {
-    background: #d1e7dd;
+/* Messages */
+.message {
+    max-width: 60%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.sent {
+    align-self: flex-end;
+    background-color: #dcf8c6;
     text-align: right;
 }
 
-/* Chat Input Area */
-.chat-input {
+.received {
+    align-self: flex-start;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+/* Message Input */
+.message-input {
     display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.chat-input input {
-    flex: 1;
+    background: #fff;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-top: 1px solid #ccc;
 }
 
-.chat-input button {
-    background-color: #9b5d3a;
+.message-input textarea {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    resize: none;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.message-input button {
+    background-color: #25d366;
     color: white;
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    margin-left: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.chat-input button:hover {
-    background-color: #854a2d;
-}
-
-/* Back to Inbox Button */
-.back-to-inbox {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 15px;
-    background: #245F73;
-    color: white;
-    text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
 }
 
-.back-to-inbox:hover {
-    background: #1b4a5a;
-}
-.back-btn {
-    display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
+.message-input button:hover {
+    background-color: #1ebe57;
 }
 
-.back-btn:hover {
-    background-color: #0056b3;
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .chat-container {
+        flex-direction: column;
+    }
+
+    .user-list {
+        width: 100%;
+        border-right: none;
+    }
+
+    .chat-box {
+        width: 100%;
+    }
 }
