@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Leave Requests</title>
+    <link rel="stylesheet" th:href="@{/css/faculty-leave.css}" />
+</head>
+<body>
+<header>
+    <h1>My Leave Requests</h1>
+    <nav>
+        <a href="/faculty/dashboard" class="nav-btn">Dashboard</a>
+        <a href="/faculty/leave/request" class="nav-btn"> Request Leave </a>
+        <a href="/" class="nav-btn">Logout</a>
+    </nav>
+</header>
+<div class="container">
+    <h2>Leave Requests</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Request ID</th>
+            <th>Leave Dates</th>
+            <th>Reason</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="request : ${leaveRequests}">
+            <td th:text="${request.id}"></td>
+            <!-- You can format the dates as needed -->
+            <td th:text="${request.startDate} + ' to ' + ${request.endDate}"></td>
+            <td th:text="${request.reason}"></td>
+            <td th:text="${request.status}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

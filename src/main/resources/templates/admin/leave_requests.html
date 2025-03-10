@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Leave Requests</title>
+  <link rel="stylesheet" th:href="@{/css/leave.css}">
+</head>
+<body>
+<header>
+  <h1>Leave Requests</h1>
+  <a href="/admin/dashboard" class="nav-btn">Dashboard</a>
+  <a href="/" class="nav-btn">Logout</a>
+</header>
+<div class="container">
+  <table>
+    <thead>
+    <tr>
+      <th>Faculty Email</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Reason</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="request : ${leaveRequests}">
+      <td th:text="${request.facultyEmail}"></td>
+      <td th:text="${request.startDate}"></td>
+      <td th:text="${request.endDate}"></td>
+      <td th:text="${request.reason}"></td>
+      <td th:text="${request.status}"></td>
+      <td>
+        <form th:action="@{/admin/leave/update}" method="post">
+          <input type="hidden" name="requestId" th:value="${request.id}">
+          <select name="status">
+            <option value="APPROVED">Approve</option>
+            <option value="REJECTED">Reject</option>
+          </select>
+          <button type="submit">Update</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

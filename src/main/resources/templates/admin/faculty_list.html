@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Faculty List - Admin Dashboard</title>
+  <link rel="stylesheet" th:href="@{/css/faclistadd.css}">
+</head>
+<body>
+<header>
+  <h1>Faculty Management</h1>
+  <nav>
+    <a href="/admin/dashboard" class="nav-btn">Dashboard</a>
+    <a href="/" class="nav-btn">Logout</a>
+  </nav>
+</header>
+<div class="container">
+  <h2>Faculty List</h2>
+  <a href="/admin/faculty/add" class="btn">Add Faculty</a>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="faculty : ${faculties}">
+      <td th:text="${faculty.name}"></td>
+      <td th:text="${faculty.designation}"></td>
+      <td th:text="${faculty.email}"></td>
+      <td th:text="${faculty.department}"></td>
+      <td>
+        <form th:action="@{'/admin/faculty/delete/' + ${faculty.id}}" method="post">
+          <button type="submit" class="btn-delete">Delete</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

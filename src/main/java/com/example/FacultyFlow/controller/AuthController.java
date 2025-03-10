@@ -27,7 +27,13 @@ public class AuthController {
                                HttpSession session,
                                Model model) {
         System.out.println("🔍 Login attempt: Role = " + role + ", Email = " + email);
-
+        if("admin".equalsIgnoreCase(role)){
+            if (email.equalsIgnoreCase("shashankvarma@edu.com") && password.equals("1308")) {
+                session.setAttribute("loggedInUserEmail", email);
+                session.setAttribute("role", "ADMIN");
+                return "redirect:/admin/dashboard"; // Redirect to admin dashboard
+            }
+        }
         if ("student".equalsIgnoreCase(role)) {
             // Check in users table
             User student = userRepo.findByEmail(email);

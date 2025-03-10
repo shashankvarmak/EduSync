@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Faculty</title>
+    <link rel="stylesheet" th:href="@{/css/faclistadd.css}">
+</head>
+<body>
+<header>
+    <h1>Add Faculty</h1>
+    <a href="/admin/dashboard" class="nav-btn">Back to Dashboard</a>
+    <a href="/" class="nav-btn">Logout</a>
+</header>
+<div class="container">
+    <form action="/admin/faculty/add" method="post">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="designation">Designation:</label>
+        <input type="text" id="designation" name="designation" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+            <option value="" disabled selected>Select Department</option>
+            <option value="CSE">CSE</option>
+            <option value="IT">IT</option>
+            <option value="CSM">CSM</option>
+            <option value="CSD">CSD</option>
+            <option value="CSC">CSC</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="CSIT">CSIT</option>
+        </select>
+
+        <button type="submit" class="btn-submit">Add Faculty</button>
+    </form>
+</div>
+</body>
+</html>

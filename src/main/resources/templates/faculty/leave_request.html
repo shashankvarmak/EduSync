@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Request Leave</title>
+  <link rel="stylesheet" th:href="@{/css/leave.css}">
+</head>
+<body>
+<header>
+  <h1>Request Leave</h1>
+  <a href="/faculty/dashboard" class="nav-btn">Back to Dashboard</a>
+  <a href="/faculty/leave/status" class="nav-btn">My Leave requests</a>
+  <a href="/" class="nav-btn">Logout</a>
+</header>
+<div class="container">
+  <form action="/faculty/leave/submit" method="post">
+    <input type="hidden" name="facultyEmail" th:value="${facultyEmail}">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" required>
+
+    <label for="reason">Reason:</label>
+    <textarea id="reason" name="reason" placeholder="Enter the reason for leave" required></textarea>
+
+    <button type="submit">Submit Leave Request</button>
+  </form>
+</div>
+</body>
+</html>

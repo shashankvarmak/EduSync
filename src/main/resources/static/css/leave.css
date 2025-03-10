@@ -1,0 +1,160 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F2F0EF;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #245F73;
+    padding: 15px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.nav-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.nav-btn:hover {
+    text-decoration: underline;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 100px auto 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* === Request Leave Form Styles === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-size: 16px;
+    color: #333;
+}
+
+form input[type="date"],
+form textarea,
+form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+form button {
+    background-color: #9b5d3a;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #854a2d;
+}
+
+/* === Admin Leave Requests Table Styles === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
+}
+
+table th {
+    background-color: #245F73;
+    color: white;
+}
+
+table td {
+    color: #333;
+}
+
+table select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+table button {
+    background-color: #9b5d3a;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+table button:hover {
+    background-color: #854a2d;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .container {
+        margin: 50px 10px;
+        padding: 15px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    .nav-btn {
+        margin: 5px 0;
+    }
+
+    table th,
+    table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}

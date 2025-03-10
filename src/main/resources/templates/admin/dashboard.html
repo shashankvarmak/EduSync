@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Faculty Management System</title>
+  <link rel="stylesheet" th:href="@{/css/admindashboard.css}">
+</head>
+<body>
+<header class="fixed-header">
+  <h1>Admin Dashboard</h1>
+  <nav class="header-nav">
+    <a href="/admin/leave/requests" class="nav-btn">View Leave Requests</a>
+    <a href="/admin/faculty/list" class="nav-btn">Manage Faculty</a>
+    <a href="/logout" class="nav-btn">Logout</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h2>Admin Profile</h2>
+  <p><strong>Email:</strong> <span>shashankvarma@edu.com</span></p>
+  <p><strong>Role:</strong> <span>ADMIN</span></p>
+  <p><strong>Profession:</strong> <span>Head of All Departments</span></p>
+</div>
+</body>
+</html>
