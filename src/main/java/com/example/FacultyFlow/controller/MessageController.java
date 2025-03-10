@@ -27,14 +27,17 @@ public class MessageController {
     @GetMapping
     public String showInbox(HttpSession session, Model model) {
         String loggedInEmail = (String) session.getAttribute("loggedInUserEmail");
-
         if (loggedInEmail == null) {
             return "redirect:/login";
         }
 
-        // Fetch chat users
+        // Existing chat users (from previous conversations)
         List<String> chatUsers = messageService.getChatUsers(loggedInEmail);
         model.addAttribute("chatUsers", chatUsers);
+
+        // Fetch all faculty members (so the student can start a new conversation)
+        List<Faculty> facultyList = facultyService.getAllFaculty();
+        model.addAttribute("facultyList", facultyList);
 
         return "messages/inbox";
     }
