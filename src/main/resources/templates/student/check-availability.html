@@ -9,7 +9,7 @@
 <body>
 <header>
     <h1>Faculty Availability</h1>
-    <a href="/faculty/dashboard" class="nav-btn">Back to Dashboard</a>
+    <a href="/student/dashboard" class="nav-btn">Back to Dashboard</a>
     <a href="/" class="nav-btn">Logout</a>
 </header>
 <h2>Check Faculty Availability</h2>
@@ -54,7 +54,7 @@
         let period = $("#period").val();
 
         $.ajax({
-            url: "/faculty/check-availability",
+            url: "/student/check-availability",
             type: "GET",
             data: { facultyId, day, period },
             success: function(response) {
